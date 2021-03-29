@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+{% load static %}    <head>
+     <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no"/>
+        <link href="{% static 'css/flogin.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+    <script src="{% static 'js/flogin.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+    <body>
+<header><div class="shadow-lg"id = "first">
+            <div id = "second">
+              <li id="site"><lable>Welcome to</lable> <a href = ""> HomeMart:)</a></li>
+                <form class="row g-3" method="POST">
+                    {% csrf_token %}
+                    <div class="col-auto mb-3"><li><br><input onkeypress="return (event.charCode >=48  && event.charCode <= 57  )" class="form-control form-control-md" type = "text" name ="log_phone" placeholder="Phone No."></li></div>
+
+        <div class="col-auto">
+            <li>
+                <br>
+                <input name="log_pass"class="form-control form-control-md " type = "password" placeholder="Password">
+                <a href="forget_password/" name="forget_password">forget password?</a>
+            </li>
+
+        </div>
+
+   <div class="col-auto">
+       <li> <button class="btn btn-primary mb-3" type="submit" name="login" value="POST">Log In
+   </button>
+   </li>
+     </div>
+
+     </form>
+            </div>
+        </div>
+</header>
+
+        <div id="third">
+            
+        <div id = "fifth">
+            <img src = "{% static 'photos/fifth.png' %}" width="1200" height = "500">
+       </div>
+            <form id = "fourth" method="POST">
+                <h1>Create new account</h1>
+                {% csrf_token %}
+                <li class="input-group"><ul><input type = "text"  name="firstname" placeholder="First Name" id="firstname"><input type = "text" placeholder="Last Name" id = "lastname"></ul></li>
+                <li>
+                    <ul>
+                        <input type = "text" onkeypress="return (event.charCode >=48  && event.charCode <= 57  )" name="phone_no" placeholder="Phone No.">
+                    </ul>
+                <ul>
+                    <input type="password" name="pass" placeholder="Enter password">
+                </ul>
+                    <ul>
+                        <input type="password" name="match_pass" placeholder="Confirm password">
+                    </ul>
+                </li>
+                <li class="input-group">
+                    <ul>
+                        <input id="location" onclick="changeVisibility()" name="loc" type="text" placeholder=" Your Location ">
+                       <lable onclick=" loc()" class="btn btn-primary"   id="locbtn"><i class="fas fa-map-marker-alt"></i></lable>
+                    </ul>
+                </li>
+               <div>
+                   <h3>
+                       <li>
+                           <input class="form-check-input" type="radio" name="option" id="shop" value="shop">
+                            <label for = "shop">Shopkeeper</label>
+                            <input class="form-check-input" type="radio" name="option" id="cust" value = "cust">
+                           <label for="cust"> Customer</label>
+                       </li>
+               </h3>
+
+               </div>
+<div>
+    <input class="form-check-input" onchange="document.getElementById('su').disabled = !this.checked;" type="checkbox" name="option" id="cust" value = "cust"> Accepts terms and condition
+</div>
+                <div><li><button id="su" class="btn btn-danger" type="submit" name="cre" value="POST" disabled>Create an account</li>
+            </div></form>
+        </div>
+{% if messages %}
+        {% for message in messages %}
+         {% if message %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+    </body>
+</html>

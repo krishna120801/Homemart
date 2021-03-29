@@ -1,0 +1,169 @@
+ .p
+ {
+  background-image:url(https://i.imgur.com/YWga5Ql.png);
+  height:100%;
+  
+}
+#but
+{background-color: #008CBA;
+	padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px #999;
+ 
+}
+#but:active {
+  background-color: #6AA0FF;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+div nav
+{padding-left:5%;
+    color: #0e385f;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 29px;
+    margin-top: 40px;
+    width: 450px;
+word-spacing: -1px;}
+.l {
+    background-color: white;
+    color: black;
+    border: 2px solid blue;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 65%;
+	margin-top:8px;
+}
+a
+{
+	
+	text-decoration:none;
+}
+ #xyz
+{
+	width:100%;
+	background-color:#f2f2f2;
+}
+#bar
+{
+	
+	padding-left:65%;
+}
+u
+{
+	padding-left:55%;
+}
+.table
+{
+	width:100%;
+	background-color:#6AA0FF;
+}
+#kar
+{
+	width:142px;
+	padding:none;
+	transition:none;
+	border:none;
+	box-sizing:none;
+	margin-top:none;
+	margin-right:none;
+}
+#mar
+{
+	width:142px;
+	padding:none;
+	transition:none;
+	border:none;
+	box-sizing:none;
+	margin-top:none;
+	margin-right:none;
+	margin-left:12%;	
+}
+button
+{
+	background-color:#6699ff;
+	font-weight:bold;
+}
+#ttf
+{
+
+	margin-left:65%;
+}
+#txf
+{
+	margin-left:65%;
+}
+#tt
+{
+	
+	margin-left:65%;
+}
+#txtf
+{
+	margin-top:4%;
+	margin-left:65%;
+}
+div select
+{
+	 padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+div.info
+{
+	padding-left:65%;
+}
+input[type=radio]
+{width:28px;
+	padding:0 10px 0 3px;
+	margin-left:65%;
+}
+#select
+{	
+margin-left:2%;
+	
+}
+input[type=text],[type=Email],[type=password] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+  input[type='checkbox'] {
+    padding-left:65%;
+	width:15px;
+    height:25px;
+    background:green;
+    border-radius:5px;
+    border:1px solid #555;
+}
+
+.none
+{
+	padding:none;
+	margin:none;
+}
+
+h1
+{
+	padding-left:65%;
+shadow:4px;
+font-family:"Times New Roman", Times, serif;
+}

@@ -1,0 +1,17 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="YourThoughts.forms.CheckBoxInput" />
+          <option value="YourThoughts.forms.NumberInput" />
+          <option value="YourThoughts.forms.DateField" />
+          <option value="YourThoughts.forms.CharInput" />
+          <option value="YourThoughts.forms.CharField" />
+          <option value="firstsite.urls.include" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

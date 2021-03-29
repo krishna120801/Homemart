@@ -1,0 +1,58 @@
+header div b{
+	padding-left: 20;
+	text-align: center;
+	top: 3;
+position: fixed;
+}
+header{
+background-color:#F97068;
+font-family:Georgia, serif;
+font-weight:bold;
+display:block;
+height: 50;
+top: 0;
+left:0;right:0;
+position: fixed;
+box-sizing: border-box;
+}
+div.lg {
+color:#EDF2EF;
+}
+lable.welcome{
+	font-weight:800;
+	font-size:15px;
+position: fixed;
+left: 71%;
+}
+.lg{
+padding-top:20.25px;}
+b{
+	font-size:35px;
+}
+div.body
+{
+background-color:#EDF2EF;
+}
+.searchinput{
+		background-color: #F97068;
+		color:#EDF2EF;
+	outline:none;
+	border-radius: 2px;
+	border:0px 0px 10px 0px;
+	width: 110px;
+	height: 20px;
+	cursor:auto;
+	left:86%;
+	position: fixed;
+}
+.fa{
+width: 42.5px;
+height: 42.5px;
+transition: all 1s;
+font-size: :1.2em;
+right:3.5%;
+position: fixed;
+}
+.anc:visited{
+	color:#EDF2EF;
+}
