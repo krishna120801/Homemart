@@ -20,7 +20,7 @@
          <div class="head container-fluid">
                 <div class="inner_head">
                 <div class="logo shadow-lg justify-center">
-                    <div class="lable">Welcome to</div> <a href = ""> HomeMart:)</a>
+                    <div class="lable">Welcome to</div> <a href = "Home"> HomeMart:)</a>
             </div>
 <div class="header_link">
           <div class="nav-item active mt-3 ">  <form class="d-flex">
@@ -32,15 +32,15 @@
                   <div class="mt-4 ml-3 mx-auto cart">
 <a href="#">
 <i class="fas fa-shopping-cart fa-2x"></i>
-<span class="badge badge-pill badge-primary">12</span>
+<span class="badge badge-pill badge-primary">{{ count }}</span>
 </a>
 </div>
 
                 <div class="dropdown mt-4">
-                    <a>User's Profile</a>
+                    <a class="m-3" id="{{ phone }}">{{ name }}</a>
 <div class="dropdown-content">
                     <a>My orders</a>
-                    <a>Logout</a>
+                    <a href="login">Logout</a>
 </div>
                 </select></a>
             </div>
@@ -77,7 +77,7 @@
                        <img src="{% static 'photos\BEVERAGES-01-01.jpg' %}" class="img-thumbnail"></a>
                     </div>
                     <div class="imgcat img-fluid col-6 shadow">
-                        <a href="product_s">
+                        <a href="{% url 'product_staples' %}">
                         <img src="{% static 'photos\Staples-06-06.jpg' %}" class="img-thumbnail"></a>
 
                     </div>
@@ -113,5 +113,14 @@
                 Copyright © HomeMart Store. All Rights Reserved | Contact Us: +91 90000 00000
             </div>
         </footer>
+    {% block js%}
+        <script>
+          var alerted = localStorage.getItem('alerted') || '';
+    if (alerted != 'yes') {
+    alert("Conguratulations ! you are successfully logged in.");
+    localStorage.setItem('alerted','yes');
+    }
+</script>
+        {% endblock %}
     </body>
 </html>

@@ -128,16 +128,3 @@ a:hover{color: brown;}
 .cart,.drop{
   padding-left: 4.5rem;
 }
-.pricekm, .pricebb{
-display:none;}
-.dropdown-item{
-background:#f1f1f1;
-}
-.dd{
-float:center;
-padding-left:35%;
-}
-#products{
-display:flex;
-flex-wrap:wrap;
-}

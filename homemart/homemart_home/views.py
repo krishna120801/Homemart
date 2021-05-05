@@ -1,15 +1,20 @@
 from django.contrib import messages
+from selenium import webdriver
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 import sqlite3
-from .forms import PostForm
+
+from .forms import PostForm,cartelements
 from .models import *
 # Create your views here.
-
+name="404"
+phone="404_error"
+count=0
+shop = None
 def register(request):
     postform=PostForm(request.POST)
     if 'login' in request.POST:
+        global phone
         phone = request.POST.get("log_phone")
         password = request.POST["log_pass"]
         try:
@@ -23,8 +28,10 @@ def register(request):
             messages.error(request,"Please Check your phone nu or password!")
             return redirect('login')
         else:
-            messages.success(request,"conguratulations,you are successfully logged in!")
-            return redirect('Home')
+           global name
+           name=rows[0][3]
+           param={'phone':phone,'name':name}
+           return render(request,'index.html',param)
     elif request.method=='POST':
         post=for_registration()
         post.name=request.POST.get("firstname")
@@ -34,7 +41,6 @@ def register(request):
         post.loc = request.POST.get("loc")
         if not post.password or not post.phone_nu or not post.name or not post.loc:
             messages.error(request, f"please fill all fields.")
-            # return HttpResponseRedirect("")
             return redirect('login')
         elif match_password != post.password:
             messages.info(request, f"passwords did not match.")
@@ -50,8 +56,6 @@ def register(request):
         return render(request,"login.html")
 def forgotten(request):
     return render(request,"forgetp.html")
-def Home(request):
-    return render(request, "index.html")
 def staples(request):
     prod=Product.objects.all()
     try:
@@ -59,8 +63,87 @@ def staples(request):
     except sqlite3.Error as e:
         print(e)
     cur = conn.cursor()
-    cur.execute('SELECT dmart.price,kmart.price,big.price as p FROM homemart_home_product as p,homemart_home_d_mart_price as dmart,homemart_home_Big_bazaar_price as big,homemart_home_k_mart_price as kmart WHERE dmart.cartid=p.cartid and big.cartid=p.cartid and kmart.cartid=p.cartid and p.id=1')
-    row=cur.fetchall()
-    print(row)
+    cur.execute(
+        'select DISTINCT p.cartid  from homemart_home_product as p,homemart_home_cart as cart,homemart_home_for_registration as login where cart.Cartid=p.Cartid and cart.phone_no=?;',
+        (phone,))
+    row2 = cur.fetchall()
+    global count
+    count = len(row2)
+    row = list()
     naam=["Dmart","Kmart","Big Bazaar"]
-    return render(request, "product_staples.html", {'products': prod,'row':row,'naam':naam})
+    if 'Kmart' == request.POST.get('drop'):
+        pos2 = 1
+        pos1 = 0
+        naam[pos1], naam[pos2] = naam[pos2], naam[pos1]
+        cur.execute('SELECT kmart.price FROM homemart_home_product as p, homemart_home_k_mart_price as kmart WHERE kmart.cartid = p.cartid;')
+    elif 'Big Bazaar'== request.POST.get('drop'):
+        pos2=2
+        pos1=0
+        naam[pos1], naam[pos2] = naam[pos2], naam[pos1]
+        cur.execute('SELECT big_b.price FROM homemart_home_product as p,homemart_home_big_bazaar_price as big_b WHERE big_b.cartid=p.cartid;')
+    elif 'Dmart'== request.POST.get('drop'):
+        cur.execute('SELECT dmart.price FROM homemart_home_product as p,homemart_home_d_mart_price as dmart WHERE dmart.cartid=p.cartid;')
+    else:
+        cur.execute(
+            'SELECT dmart.price FROM homemart_home_product as p,homemart_home_d_mart_price as dmart WHERE dmart.cartid=p.cartid;')
+    rows=cur.fetchall()
+    if "cartid" in request.POST:
+        post=cart()
+        post.Cartid=request.POST['cartid']
+        post.phone_no=phone
+        post.save()
+        cur.execute(
+            'select DISTINCT p.cartid  from homemart_home_product as p,homemart_home_cart as cart,homemart_home_for_registration as login where cart.Cartid=p.Cartid and cart.phone_no=?;',
+            (phone,))
+        row2 = cur.fetchall()
+        count = len(row2)
+    for item in rows:
+        for i in item:
+            row.append(i)
+    zipped_product_price=zip(prod,row)
+    #cart.objects.all().delete()
+
+    return render(request, "product_staples.html", {"count":count,'phone':phone,'name':name,'products': zipped_product_price,'naam':naam})
+def search(request):
+    naam = ["Dmart", "Kmart", "Big Bazaar"]
+    conn = sqlite3.connect("db.sqlite3")
+    cur = conn.cursor()
+    global count
+    query= request.GET['query']
+    if len(query)>71 or len(query)<1:
+        product=Product.objects.none()
+        params = {'products': product}
+    else:
+        productname = Product.objects.filter(productname__icontains=query)
+        productdesc = Product.objects.filter(discription__icontains=query)
+        product= productname.union(productdesc)
+        if "cartid" in request.POST:
+            post = cart()
+            post.Cartid = request.POST['cartid']
+            post.phone_no = phone
+            post.save()
+            cur.execute(
+                'select DISTINCT p.cartid  from homemart_home_product as p,homemart_home_cart as cart,homemart_home_for_registration as login where cart.Cartid=p.Cartid and cart.phone_no=?;',
+                (phone,))
+            row2 = cur.fetchall()
+            count = len(row2)
+        params = {"count":count,'phone':phone,'products': product,'naam':naam,"query":query,"name":name}
+    return render(request, 'search.html', params)
+
+def cartfun(request):
+    naam=["Dmart","Kmart","Big Bazaar"]
+    try:
+        conn = sqlite3.connect("db.sqlite3")
+    except sqlite3.Error as e:
+        print(e)
+    cur = conn.cursor()
+    cur.execute(
+        'select DISTINCT p.cartid  from homemart_home_product as p,homemart_home_cart as cart,homemart_home_for_registration as login where cart.Cartid=p.Cartid and cart.phone_no=?;',
+        (phone,))
+    row2 = cur.fetchall()
+    count = len(row2)
+    cur.execute(
+        'select DISTINCT p.productname,p.discription,p.image,p.Cartid  from homemart_home_product as p,homemart_home_cart as cart,homemart_home_for_registration as login where cart.Cartid=p.Cartid and cart.phone_no=?;',
+        (phone,))
+    product=cur.fetchall()
+    return render(request,'cart.html',{'products':product,'count':count,'phone':phone,'name':name,'naam':naam})
