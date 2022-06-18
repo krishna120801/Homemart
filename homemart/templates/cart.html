@@ -62,7 +62,7 @@
                         <a class="m-3" id="{{ phone }}">{{ name }}</a>
                         <div class="dropdown-content">
                             <a>My orders</a>
-                            <a href="login">Logout</a>
+                            <a href="/">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -286,6 +286,7 @@ $("#checkbtn").click(function(){
     grandtotal+=(val{{ forloop.counter }} * parseInt({{ item.5 }}));
     $("#totalamount").text(grandtotal);
     {% endfor %}
+    $("#checkbtn").remove();
 });
 var grandtotal=0;
 {% for item in products %}

@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from homemart_home.views import register,staples,search,cartfun,checkout,order_confirm
+from homemart_home.views import register,staples,search,cartfun,order_confirm
 urlpatterns = [
     path('admin/', admin.site.urls),
 path('', register,name='login'),
 path('Home', register,name='Home'),
 path('product_s',staples ,name='product_staples'),
 path('search',search ,name='Search'),
-path('checkout',checkout ,name='Checkout'),
 path('your_cart',cartfun ,name='Cart'),
 path('order_confirm',order_confirm ,name='order_confirmation')
 ]

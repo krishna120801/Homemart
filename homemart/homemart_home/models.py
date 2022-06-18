@@ -12,17 +12,17 @@ class Product(models.Model):
     image = models.CharField(max_length=5000, null=True, blank=True)
     Cartid=models.CharField(max_length=10,null=True)
 # Create your models here.
-'''class customer_details(models.Model):
+class customer_details(models.Model):
     f_name=models.CharField(max_length=25,null=False)
     l_name=models.CharField(max_length=25,null=False)
     phone_no=models.CharField(max_length=10,null=False)
     email=models.CharField(max_length=50,null=False)
-    country=CountryField(max_length=25,null=False)
+    country=models.CharField(max_length=25,null=False)
     Address1=models.CharField(max_length=75,null=False)
     Address2=models.CharField(max_length=75,null=False)
     Post_Zip=models.IntegerField(max_length=10,null=False)
     Town_City=models.CharField(max_length=25,null=False)
-    Additional=models.TextField(max_length=100,null=False)'''
+    Additional=models.TextField(max_length=100,null=False)
 '''class Items(models.Model):
     Item_name=models.CharField(max_length=35,null=False)
     quantity=models.IntegerField(max_length=20,null=False)

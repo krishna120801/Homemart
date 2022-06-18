@@ -165,7 +165,5 @@ def cartfun(request):
     product=cur.fetchall()
     #print(product[0])
     return render(request,'cart.html',{'products':product,'count':count,'phone':phone,'name':name,'naam':naam})
-def checkout(request):
-    return render(request,'checkout.html')
 def order_confirm(request):
     return render(request,'order_confirmation.html')
