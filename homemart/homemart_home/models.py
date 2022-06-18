@@ -1,5 +1,4 @@
 from django.db import models
-from django_countries.fields import CountryField
 class for_registration(models.Model):
     name = models.CharField(max_length=200,null=False)
     password= models.CharField(max_length=200,null=False)
@@ -12,15 +11,6 @@ class Product(models.Model):
     discription = models.TextField()
     image = models.CharField(max_length=5000, null=True, blank=True)
     Cartid=models.CharField(max_length=10,null=True)
-class D_mart_price(models.Model):
-    cartid=models.CharField(primary_key=True,max_length=10)
-    price=models.CharField(max_length=10,null=True)
-class k_mart_price(models.Model):
-    cartid=models.CharField(primary_key=True,max_length=10)
-    price=models.CharField(max_length=10,null=True)
-class Big_bazaar_price(models.Model):
-    cartid=models.CharField(primary_key=True,max_length=10)
-    price=models.CharField(max_length=10,null=True)
 # Create your models here.
 '''class customer_details(models.Model):
     f_name=models.CharField(max_length=25,null=False)
@@ -41,3 +31,10 @@ class Big_bazaar_price(models.Model):
 class cart(models.Model):
     Cartid=models.CharField(max_length=10)
     phone_no=models.CharField(max_length=11)
+    shopName=models.CharField(max_length=100,null=True)
+    shopid=models.CharField(max_length=25,null=True)
+class shops(models.Model):
+    cartid=models.CharField(max_length=10,null=True)
+    price=models.CharField(max_length=10,null=True)
+    shopid=models.CharField(max_length=25)
+    shopname=models.CharField(max_length=100)

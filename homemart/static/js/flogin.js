@@ -14,7 +14,7 @@ if (window.navigator.geolocation) {
 
 const successfulLookup = position => {
   const { latitude, longitude } = position.coords;
-  fetch("https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=5400eb06e9ee4ca7851639e6b632f55f")
+  fetch("https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=52c7d8f0eac04f7a94a7a2618d7844f7")
     .then(response => {
      const r=response.json();
     return r})

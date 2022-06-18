@@ -16,6 +16,7 @@
       <link href="{% static 'css/secondcss.css' %}" rel="stylesheet" type="text/css">
     </head>
     <body>
+        {% block navbar %}
         <nav class="navbar navbar-style header_menu">
          <div class="head container-fluid">
                 <div class="inner_head">
@@ -37,7 +38,7 @@
 </div>
 
                 <div class="dropdown mt-4">
-                    <a class="m-3" id="{{ phone }}">{{ name }}</a>
+                    <a class="m-3" id="{{ phone }}">{{ phone }}</a>
 <div class="dropdown-content">
                     <a>My orders</a>
                     <a href="login">Logout</a>
@@ -48,6 +49,7 @@
          </div>
         </div>
        </nav>
+       {% endblock %}
         <div class="content">
             <div class="container-fluid">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">

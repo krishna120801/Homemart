@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'homemart_home',
-    'django_countries',
+    
 ]
 
 MIDDLEWARE = [

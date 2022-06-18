@@ -1,0 +1,312 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homemart webpage</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/14ac1f37b0.js" crossorigin="anonymous"></script>
+    <link href="{% static 'css/secondcss.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-style header_menu">
+        <div class="head container-fluid">
+            <div class="inner_head">
+                <div class="logo shadow-lg justify-center">
+                    <div class="lable">Welcome to</div> <a href="Home"> HomeMart:)</a>
+                </div>
+                <div class="header_link">
+                    <div class="nav-item active mt-3 ">
+                        <form method="get" action="/search" class="d-flex form-inline">
+                            <input class="form-control me-2" name="query" id="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+
+                    <div class="mt-4 ml-3 mx-auto cart">
+                        <a href="#">
+                            <i class="fas fa-shopping-cart fa-2x"></i>
+                            <span class="badge badge-pill badge-primary">{{ count }}</span>
+                        </a>
+                    </div>
+
+                    <div class="dropdown mt-4">
+                        <a class="m-3" id="{{ phone }}">{{ name }}</a>
+                        <div class="dropdown-content">
+                            <a>My orders</a>
+                            <a href="login">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <section class="cart py-5 my-5" id="cart">
+        <div class="container row">
+            <div class="col-md-8 border-right ">
+                <div class="col-lg-8 hideonjq">
+                    <!-- Card -->
+                    <div class="card bg_checkout_1 pb-5">
+                    <div class="card-body">
+                    <h5 class="mb-5">Billing details</h5>
+                    <!-- Grid row -->
+                    <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-lg-6">
+                    <!-- First name -->
+                    <div class="form-group mb-0 mb-lg-4">
+                    <label for="firstName">First name</label>
+                    <input type="text" id="firstName" class="form-control mb-0
+                    mb-lg-2">
+                    </div>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-lg-6">
+                    <!-- Last name -->
+                    <div class="form-group md-outline">
+                    <label for="lastName">Last name</label>
+                    <input type="text" id="lastName" class="form-control">
+                    </div></div>
+                <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+                <!-- Phone -->
+                <div class="form-group">
+                <label for="form18">Phone</label>
+                <input type="number" id="form18" class="form-control">
+                </div>
+                <!-- Email address -->
+                <div class="form-group">
+                <label for="form19">Email address</label>
+                <input type="email" id="form19" class="form-control">
+                </div>
+                <!-- Country -->
+                <div class="d-flex flex-wrap">
+                <div class="w-100">
+                <label>Country</label>
+                <select class="custom-select form-group">
+                <option value="" selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+                </select>
+                </div>
+                </div>
+                <!-- Address Part 1 -->
+                <div class="form-group">
+                <label for="form14">Address Line 1</label><input type="text" id="form14" placeholder="House number and street name"
+                class="form-control">
+                </div>
+                <!-- Address Part 2 -->
+                <div class="form-group">
+                <label for="form15">Address Line 2</label>
+                <input type="text" id="form15" placeholder="Apartment, suite, unit etc. (optional)"
+                class="form-control">
+                </div>
+                <!-- Postcode / ZIP -->
+                <div class="form-group">
+                <label for="form16">Postcode / ZIP</label>
+                <input type="text" id="form16" class="form-control">
+                </div>
+                <!-- Town / City -->
+                <div class="form-group">
+                <label for="form17">Town / City</label>
+                <input type="text" id="form17" class="form-control">
+                </div>
+                <!-- Additional information -->
+                <div class="form-group">
+                <label for="form76">Additional information</label>
+                <textarea id="form76" class="md-textarea form-control"
+                rows="4"></textarea>
+                </div>
+                <!-- <button class="btn btn-success"><i class="fa fa-check"></i>
+                Purchase</button> --><div class="text-center">
+                <a href="order_confirm" class="btn btn-primary">
+                <i class="fa fa-check mr-2"></i>Purchase
+                </a>
+                </div>
+                </div>
+                </div>
+                <!-- Card -->
+                </div>
+                <div class="mb-3 cartblock">
+                    <div class="pt-4">
+                        <h5 class="mb-4">Cart (<span id="itemnumber">{{ count }}</span> items)</h5>
+                    </div>
+                    {% for item in products %}
+
+                    <div class="row mb-4">
+                        <div class="col-md-5 col-lg-3 col-xl-3">
+                            <div class="rounded mb-3 mb-md-0">
+                                <img class="img-fluid w-100 rounded" src="{{ item.2 }}" alt="Sample">
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-lg-9 col-xl-9">
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h5>{{ item.0 }}</h5>
+                                        <p class="mb-3 text-muted text-uppercase small">{{ item.1 }}</p>
+                                        <p class="mb-3 text-muted text-uppercase small">
+                                            <div class="dropdown">
+                                                {{ item.4 }}
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div class="mb-0 w-100">
+                                            <button
+                                                id="minus{{ forloop.counter }}" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <input class="quantity text-center" id="makeqty{{ forloop.counter }}" min="0" max="10" name="quantity"
+                                                value="1" type="number">
+                                            <button
+                                            id="plus{{ forloop.counter }}"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                class="btn btn-sm btn-outline-primary" >
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <small class="form-text text-muted text-center">
+                                            (Note, 1 piece)
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <a href="javascript:;" type="submit" class="small text-uppercase mr-3">
+                                                <i class="fas fa-trash-alt mr-1" submit="post" name="{{ item.3 }}"></i>
+                                                Remove item </a>
+                                        </form>
+                                    </div>
+                                    <p class="mb-0"><span><strong id="summary">₹{{ item.5 }}</strong></span></p
+                                        class="mb-0">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-2">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4 rounded">
+                <div class="mb-3">
+                    <div class="pt-4">
+                        <h5 class="mb-3">Order summary</h5>
+                        <table class="table">
+                            {% for item in products %}
+                            <tr class="
+                        text-center px-0 ">
+                                <td>{{ item.6 }}</td>
+                                <td >{{ item.0 }}</td>
+                                <td>x<b id="qty{{ forloop.counter }}" class="quantity align-items-center" name="quantity" type="number">1</b></td>
+                                <td>₹{{ item.5 }}</td>
+                        </tr>
+                            {% endfor %}
+                            
+                            <tr class="text-center px-0 mb-3 border-top">
+                                    <th>Total amount
+                                    <strong>
+                                        <p class="mb-0">(including GST)</p>
+                                    </strong>
+                                    for per item
+                                </th>
+                                <th></th>
+                                <td class="pt-5"><strong>₹<b id="totalamount">--</b></strong></td>
+                            </tr>
+                        </table>
+                        note: prices will be change if you increase quantity
+                        <a href="#" id ="checkbtn" class="btn btn-primary btn-block">Go to
+                            Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            Copyright © HomeMart Store. All Rights Reserved | Contact Us: +91 90000 00000
+        </div>
+    </footer>
+{% block js %}
+<script type="text/javascript">
+$(document).ready();
+let n=  $("span#itemnumber").text();
+/*$("#plus1").click(function() {
+    var val=$('#makeqty1').val();
+    $('#qty1').text(val);
+});
+$("#minus1").click(function() {
+    val=$('#makeqty1').val()
+    $('#qty1').text(val);
+});*/
+$("#checkbtn").click(function(){
+    $(".hideonjq").css('display','block');
+    $(".cartblock").css('display','none');
+    {% for item in products %}
+    val{{ forloop.counter }}=parseInt($(makeqty{{ forloop.counter }}).val());
+    grandtotal+=(val{{ forloop.counter }} * parseInt({{ item.5 }}));
+    $("#totalamount").text(grandtotal);
+    {% endfor %}
+});
+var grandtotal=0;
+{% for item in products %}
+selector="#plus"+"{{ forloop.counter }}";
+qty{{ forloop.counter }}="#qty"+ "{{ forloop.counter }}"
+makeqty{{ forloop.counter }}="#makeqty"+ "{{ forloop.counter }}"
+var val{{ forloop.counter }}=1;
+$(selector).click(function() {
+    val{{ forloop.counter }}=parseInt($(makeqty{{ forloop.counter }}).val());
+    $(qty{{ forloop.counter }}).text(val{{ forloop.counter }});
+    grandtotal+=(val{{ forloop.counter }} * parseInt({{ item.5 }}));
+});
+selector1="#minus"+"{{ forloop.counter }}";
+$(selector1).click(function() {
+    val{{ forloop.counter }}=parseInt($(makeqty{{ forloop.counter }}).val());
+    $(qty{{ forloop.counter }}).text(val{{ forloop.counter }});
+});
+{% endfor %}
+/*grandtotal+=(val{{ forloop.counter }} * parseInt({{ item.5 }}));*/
+</script>
+{% endblock %}
+</body>
+
+</html>
